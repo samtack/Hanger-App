@@ -1,0 +1,234 @@
+WindowManager:
+    MainWindow:
+    LoginWindow:
+    RegisterWindow:
+
+<MainWindow>:
+    name: "main"
+    n: n
+    email: email
+    created: created
+
+    FloatLayout:
+        CircularProgressBar:
+            id: cp
+            pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+            size_hint:(None,None)
+            height:200
+            width:200
+            max:100
+
+        Label:
+            id: n
+            pos_hint:{"x": 0.1, "y":0.88}
+            size_hint:0.8, 0.2
+            text: "Account Name: "
+
+        Label:
+            id: email
+            pos_hint:{"x": 0.1, "y":0.85}
+            size_hint:0.8, 0.2
+            text: "Email: "
+
+        Label:
+            id: created
+            pos_hint:{"x": 0.1, "y":0.82}
+            size_hint:0.8, 0.2
+            text: "Created: "
+
+        Button:
+            pos_hint:{'center_x': 0.5, "y": 0.1}
+            size_hint:0.6,0.2
+            text: "Log Out"
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "down"
+
+        Button:
+            pos_hint: {'center_x': 0.3, "top":0.5}
+            size_hint: 0.1, 0.1
+            text: "Open Door"
+            on_release:
+                root.btn1()
+
+        Button:
+            pos_hint: {'center_x': 0.7, "top":0.5}
+            size_hint: 0.1, 0.1
+            text: "Close Door"
+            on_release:
+                root.btn2()
+
+        Button:
+            pos_hint: {'center_x': 0.5, "top":0.5}
+            size_hint: 0.1, 0.1
+            text: "Connect"
+            on_release:
+                root.btnconnect()
+
+<ConnectWindow>:
+    name: "connect"
+
+    FloatLayout:
+        #CONECTAR CON EL ARMARIO
+
+        Button:
+            pos_hint: {"x":0.5, "y":0}
+            size_hint: 0.1, 0.1
+            text: "Go Back"
+            on_release:
+                app.root.current = "main"
+                root.manager.transition.direction = "right"
+
+<LoginWindow>:
+    name: "login"
+
+    first_namee: first_namee
+    password: password
+
+    FloatLayout:
+        Label:
+            pos_hint: {"x":0.1, "top":1}
+            size_hint: 0.1, 0.1
+            text: "First name: "
+
+        TextInput:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+            size_hint: 0.4, 0.12
+            id: first_namee
+            multiline: False
+
+        Label:
+            pos_hint: {"x":0.1, "top":0.7}
+            size_hint: 0.1, 0.1
+            text: "Password: "
+
+        TextInput:
+            pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+            size_hint: 0.4, 0.12
+            id: password
+            multiline: False
+
+        Button:
+            pos_hint: {"x":0.3, "y":0.25}
+            size_hint: 0.45, 0.1
+            text: "Don't have an account? Create one"
+            on_release:
+                app.root.current = "register"
+                root.manager.transition.direction = "down"
+
+        Button:
+            pos_hint: {"x":0.5, "y":0.13}
+            size_hint: 0.1, 0.1
+            text: "Login"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.loginBtn()
+
+<RegisterWindow>:
+    name: "register"
+
+    first_namee: first_namee
+    last_namee: last_namee
+    username: username
+    password: passw
+
+    FloatLayout:
+        cols:1
+
+        FloatLayout:
+            size: root.width, root.height/2
+
+            Label:
+                text: "Create an Account"
+                size_hint: 0.8, 0.2
+                pos_hint: {"x": 0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.5, 0.12
+                pos_hint: {"x": 0, "top":0.8}
+                text: "First Name: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                size_hint: 0.4, 0.12
+                pos_hint: {"x": 0.5, "top":0.8}
+                id: first_namee
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.4, 0.12
+                pos_hint: {"x": 0.05, "top":0.8-0.13}
+                text: "Last Name: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                size_hint: 0.4, 0.12
+                pos_hint: {"x": 0.5, "top":0.8-0.13}
+                id: last_namee
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.5, 0.12
+                pos_hint: {"x": 0, "top":0.8-0.13*2}
+                text: "Username: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                size_hint: 0.4, 0.12
+                pos_hint: {"x": 0.5, "top":0.8-0.13*2}
+                id: username
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.5, 0.12
+                pos_hint: {"x": 0, "top":0.4}
+                text: "Password: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                size_hint: 0.4, 0.12
+                pos_hint: {"x": 0.5, "top":0.4}
+                id: passw
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Button:
+                pos_hint: {"x":0.5, "y":0.15}
+                size_hint: 0.1, 0.1
+                text: "Submit"
+                #font_size: (root.width**2 + root.height**2) / 14**4
+                on_release:
+                    root.submit()
+                    root.manager.transition.direction = "up"
+
+            #Button:
+                #pos_hint: {"x":0.5, "y":0.07}
+                #size_hint: 0.1, 0.1
+                #text: "Go Back"
+                #on_release:
+                    #root.goback()
+                    #root.manager.transition.direction = "up"
+
+
+<P1>:
+    Label:
+        text: "Door has been opened"
+        pos_hint: {"x":0.5, "y":0.5}
+        size_hint: 0.1, 0.1
+
+<P2>:
+    Label:
+        text: "Door has been closed"
+        pos_hint: {"x":0.5, "y":0.5}
+        size_hint: 0.1, 0.1
+
+<P3>:
+    Label:
+        text: "Open Configurations and connect\nto the same WiFi connection that \nthe closet is connected to"
+        pos_hint: {"x":0.5, "y":0.5}
+        size_hint: 0.1, 0.1
