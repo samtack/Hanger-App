@@ -13,7 +13,6 @@ from kivy.core.text import Label as CoreLabel
 from kivy.lang.builder import Builder
 from kivy.graphics import Color, Ellipse, Rectangle
 from kivy.clock import Clock
-from database import DataBase
 from threading import Timer
 #import buildozer
 import mysql.connector
